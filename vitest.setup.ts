@@ -41,7 +41,7 @@ getTestsetDirectories().forEach((testsetDir) => {
         afterAll(() => {
             if (fs.existsSync(dockerComposeFile)) {
                 console.log(`Stopping Docker Compose for ${testsetDir}...`);
-                execSync(`docker-compose down`, { stdio: 'inherit' });
+                execSync(`docker compose down`, { stdio: 'inherit' });
             }
         });
 
@@ -72,12 +72,15 @@ getTestsetDirectories().forEach((testsetDir) => {
                 const response = await fetch(url, requestOptions);
                 if(testCase.expectedResponse && testCase.expectedResponse.fileName){
                     const responseFile = path.join(queriesDir, testCase.expectedResponse.fileName)
-                    const expectedResponse = fs.readFileSync( responseFile, 'utf-8');
+                    const expectedResponse = fs.readFileSync(responseFile, 'utf-8');
                     const actualResponseBuffer = await response.body.getReader().read();
                     const decoder = new TextDecoder('utf-8');
                     const actualResponse = decoder.decode(actualResponseBuffer.value);
 
                     expect(actualResponse).to.equal(expectedResponse);
+                }
+                if(testCase.expectedStatusCode){
+                    expect(response.status).to.equal(testCase.expectedStatusCode);
                 }
             });
         });
