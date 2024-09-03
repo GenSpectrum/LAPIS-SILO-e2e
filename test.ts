@@ -37,6 +37,9 @@ testsets.forEach(([testsetDir, lapisPort, siloPort]) => {
     const dataDir = path.join(testsetDir, 'data');
     const queriesDir = path.join(testsetDir, 'queries');
     const outputDir = path.join(testsetDir, 'output');
+    if (!fs.existsSync(outputDir)) {
+        fs.mkdirSync(outputDir);
+    }
     const dockerComposeFile = 'docker-compose.yml';
 
     const dockerComposeEnv = `LAPIS_TAG=latest SILO_TAG=latest \
