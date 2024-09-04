@@ -1,1 +1,60 @@
+# Ignore all files in the output directory across all subdirectories
 **/output/*
+
+# Node modules and log files
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables and configurations
+.env
+
+# Compiled files and directories
+/dist/
+/build/
+/.cache/
+/.vscode/
+*.tsbuildinfo
+
+# Operating system generated files
+.DS_Store
+Thumbs.db
+
+# IDE specific files
+.idea/
+*.swp
+*.swo
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+jspm_packages/
+bower_components/
+
+# Optional eslint cache
+.eslintcache
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# Local development
+local_settings.py
+db.sqlite3
+
+# Production build folder
+/build
+
+# Misc
+*.DS_Store
+.vscode/
+
+
