@@ -1,0 +1,97 @@
+[
+  {
+    "count": 2,
+    "country": "Switzerland",
+    "division": null
+  },
+  {
+    "count": 6,
+    "country": "Switzerland",
+    "division": "Aargau"
+  },
+  {
+    "count": 8,
+    "country": "Switzerland",
+    "division": "Basel-Land"
+  },
+  {
+    "count": 12,
+    "country": "Switzerland",
+    "division": "Basel-Stadt"
+  },
+  {
+    "count": 9,
+    "country": "Switzerland",
+    "division": "Bern"
+  },
+  {
+    "count": 4,
+    "country": "Switzerland",
+    "division": "Geneva"
+  },
+  {
+    "count": 1,
+    "country": "Switzerland",
+    "division": "Graubünden"
+  },
+  {
+    "count": 1,
+    "country": "Switzerland",
+    "division": "Jura"
+  },
+  {
+    "count": 1,
+    "country": "Switzerland",
+    "division": "Neuchâtel"
+  },
+  {
+    "count": 1,
+    "country": "Switzerland",
+    "division": "Obwalden"
+  },
+  {
+    "count": 3,
+    "country": "Switzerland",
+    "division": "Sankt Gallen"
+  },
+  {
+    "count": 3,
+    "country": "Switzerland",
+    "division": "Schwyz"
+  },
+  {
+    "count": 15,
+    "country": "Switzerland",
+    "division": "Solothurn"
+  },
+  {
+    "count": 1,
+    "country": "Switzerland",
+    "division": "Thurgau"
+  },
+  {
+    "count": 6,
+    "country": "Switzerland",
+    "division": "Ticino"
+  },
+  {
+    "count": 1,
+    "country": "Switzerland",
+    "division": "Uri"
+  },
+  {
+    "count": 6,
+    "country": "Switzerland",
+    "division": "Valais"
+  },
+  {
+    "count": 7,
+    "country": "Switzerland",
+    "division": "Vaud"
+  },
+  {
+    "count": 13,
+    "country": "Switzerland",
+    "division": "Zürich"
+  }
+]

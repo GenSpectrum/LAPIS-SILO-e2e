@@ -1,0 +1,17 @@
+{
+  "name": "lapis-silo-e2e",
+  "version": "1.0.0",
+  "description": "Testing the LAPIS API, backed by SILO, designed for easily adding new test-cases.",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest"
+  },
+  "dependencies": {
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^22.5.2"
+  }
+}
