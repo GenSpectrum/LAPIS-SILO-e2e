@@ -1,0 +1,20 @@
+{
+  "name": "Test query",
+  "endpoint": "/sample/details",
+  "method": "POST",
+  "headers": {"Content-Type": "application/json"},
+  "body": {
+    "country": "Switzerland",
+    "fields": ["hostNameScientific", "geoLocCountry", "accessionVersion"],
+    "orderBy": [
+      {
+        "field": "hostNameScientific",
+        "type": "ascending"
+      }
+    ]
+  },
+  "expectedStatusCode": 200,
+  "expectedResponse": {
+    "fileName": "query1.result.json"
+  }
+}
