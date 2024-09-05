@@ -3,15 +3,19 @@
     "version": "1.0.0",
     "description": "Testing the LAPIS API, backed by SILO, designed for easily adding new test-cases.",
     "scripts": {
-        "test": "vitest",
+        "test": "vitest --reporter=html",
         "format": "prettier --write \"./**/*.{ts,tsx,json,astro,md,mdx,mjs,cjs}\"",
         "check-format": "prettier --check \"**/*.{ts,tsx,json,astro,md,mdx,mjs,cjs}\""
     },
     "dependencies": {
+        "@mongodb-js/zstd": "^1.2.0",
         "@types/node": "^22.5.3",
         "prettier": "^3.3.3",
         "typescript": "^5.5.4",
         "vitest": "^2.0.5"
     },
-    "type": "module"
+    "type": "module",
+    "devDependencies": {
+        "@vitest/ui": "^2.0.5"
+    }
 }

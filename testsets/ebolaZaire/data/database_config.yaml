@@ -1,256 +1,254 @@
-
-
 schema:
-  instanceName: Ebola Zaire
-  opennessLevel: OPEN
-  metadata:
-    - type: string
-      name: accession
-    - type: int
-      name: version
-    - type: string
-      name: submissionId
-    - type: string
-      name: accessionVersion
-    - type: boolean
-      name: isRevocation
-    - type: string
-      generateIndex: true
-      name: submitter
-    - type: int
-      name: groupId
-    - type: string
-      generateIndex: true
-      name: groupName
-    - type: int
-      name: submittedAtTimestamp
-    - type: string
-      generateIndex: true
-      name: submittedDate
-    - type: int
-      name: releasedAtTimestamp
-    - type: string
-      generateIndex: true
-      name: releasedDate
-    - type: string
-      generateIndex: true
-      name: dataUseTerms
-    - type: date
-      name: dataUseTermsRestrictedUntil
-    - type: string
-      name: versionStatus
-    - type: string
-      name: dataUseTermsUrl
-    - type: string
-      name: ampliconPcrPrimerScheme
-    - type: string
-      name: ampliconSize
-    - type: string
-      name: anatomicalMaterial
-    - type: string
-      name: anatomicalPart
-    - type: string
-      generateIndex: true
-      name: authorAffiliations
-    - type: string
-      lapisAllowsRegexSearch: true
-      name: authors
-    - type: string
-      name: bioprojectAccession
-    - type: string
-      name: biosampleAccession
-    - type: string
-      name: bodyProduct
-    - type: int
-      name: breadthOfCoverage
-    - type: string
-      generateIndex: true
-      name: cellLine
-    - type: string
-      name: collectionDevice
-    - type: string
-      name: collectionMethod
-    - type: float
-      name: completeness
-    - type: string
-      name: consensusSequenceSoftwareName
-    - type: string
-      name: consensusSequenceSoftwareVersion
-    - type: string
-      name: cultureId
-    - type: string
-      name: dehostingMethod
-    - type: int
-      name: depthOfCoverage
-    - type: string
-      name: diagnosticMeasurementMethod
-    - type: string
-      name: diagnosticMeasurementUnit
-    - type: string
-      name: diagnosticMeasurementValue
-    - type: string
-      name: diagnosticTargetGeneName
-    - type: string
-      name: diagnosticTargetPresence
-    - type: string
-      name: displayName
-    - type: string
-      name: environmentalMaterial
-    - type: string
-      name: environmentalSite
-    - type: string
-      name: experimentalSpecimenRoleType
-    - type: string
-      name: exposureDetails
-    - type: string
-      name: exposureEvent
-    - type: string
-      name: exposureSetting
-    - type: string
-      name: foodProduct
-    - type: string
-      name: foodProductProperties
-    - type: string
-      name: frameShifts
-    - type: string
-      generateIndex: true
-      name: geoLocAdmin1
-    - type: string
-      generateIndex: true
-      name: geoLocAdmin2
-    - type: string
-      generateIndex: true
-      name: geoLocCity
-    - type: string
-      generateIndex: true
-      name: geoLocCountry
-    - type: string
-      name: geoLocSite
-    - type: int
-      name: hostAge
-    - type: string
-      name: hostAgeBin
-    - type: string
-      name: hostDisease
-    - type: string
-      name: hostGender
-    - type: string
-      name: hostHealthOutcome
-    - type: string
-      name: hostHealthState
-    - type: string
-      generateIndex: true
-      name: hostNameCommon
-    - type: string
-      generateIndex: true
-      name: hostNameScientific
-    - type: string
-      name: hostOriginCountry
-    - type: string
-      name: hostRole
-    - type: int
-      name: hostTaxonId
-    - type: string
-      name: hostVaccinationStatus
-    - type: string
-      name: insdcAccessionBase
-    - type: string
-      name: insdcAccessionFull
-    - type: int
-      name: insdcVersion
-    - type: boolean
-      name: isLabHost
-    - type: int
-      name: length
-    - type: date
-      name: ncbiReleaseDate
-    - type: string
-      generateIndex: true
-      name: ncbiSourceDb
-    - type: string
-      generateIndex: true
-      name: ncbiSubmitterCountry
-    - type: date
-      name: ncbiUpdateDate
-    - type: string
-      generateIndex: true
-      name: ncbiVirusName
-    - type: int
-      name: ncbiVirusTaxId
-    - type: string
-      generateIndex: true
-      name: passageMethod
-    - type: int
-      name: passageNumber
-    - type: string
-      name: presamplingActivity
-    - type: string
-      name: previousInfectionDisease
-    - type: string
-      name: previousInfectionOrganism
-    - type: string
-      name: purposeOfSampling
-    - type: string
-      name: purposeOfSequencing
-    - type: string
-      name: qualityControlDetails
-    - type: string
-      name: qualityControlDetermination
-    - type: string
-      name: qualityControlIssues
-    - type: string
-      name: qualityControlMethodName
-    - type: string
-      name: qualityControlMethodVersion
-    - type: string
-      name: rawSequenceDataProcessingMethod
-    - type: string
-      name: referenceGenomeAccession
-    - type: date
-      name: sampleCollectionDate
-    - type: date
-      name: sampleReceivedDate
-    - type: string
-      name: sampleType
-    - type: string
-      name: sequencedByContactEmail
-    - type: string
-      name: sequencedByContactName
-    - type: string
-      name: sequencedByOrganization
-    - type: string
-      name: sequencingAssayType
-    - type: date
-      name: sequencingDate
-    - type: string
-      name: sequencingInstrument
-    - type: string
-      name: sequencingProtocol
-    - type: string
-      name: signsAndSymptoms
-    - type: string
-      name: specimenCollectorSampleId
-    - type: string
-      name: specimenProcessing
-    - type: string
-      name: specimenProcessingDetails
-    - type: string
-      name: sraRunAccession
-    - type: int
-      name: totalAmbiguousNucs
-    - type: int
-      name: totalDeletedNucs
-    - type: int
-      name: totalFrameShifts
-    - type: int
-      name: totalInsertedNucs
-    - type: int
-      name: totalSnps
-    - type: int
-      name: totalUnknownNucs
-    - type: string
-      name: travelHistory
-    - type: string
-      name: versionComment
-  primaryKey: accessionVersion
-  dateToSortBy: sampleCollectionDate
+    instanceName: Ebola Zaire
+    opennessLevel: OPEN
+    metadata:
+        - type: string
+          name: accession
+        - type: int
+          name: version
+        - type: string
+          name: submissionId
+        - type: string
+          name: accessionVersion
+        - type: boolean
+          name: isRevocation
+        - type: string
+          generateIndex: true
+          name: submitter
+        - type: int
+          name: groupId
+        - type: string
+          generateIndex: true
+          name: groupName
+        - type: int
+          name: submittedAtTimestamp
+        - type: string
+          generateIndex: true
+          name: submittedDate
+        - type: int
+          name: releasedAtTimestamp
+        - type: string
+          generateIndex: true
+          name: releasedDate
+        - type: string
+          generateIndex: true
+          name: dataUseTerms
+        - type: date
+          name: dataUseTermsRestrictedUntil
+        - type: string
+          name: versionStatus
+        - type: string
+          name: dataUseTermsUrl
+        - type: string
+          name: ampliconPcrPrimerScheme
+        - type: string
+          name: ampliconSize
+        - type: string
+          name: anatomicalMaterial
+        - type: string
+          name: anatomicalPart
+        - type: string
+          generateIndex: true
+          name: authorAffiliations
+        - type: string
+          lapisAllowsRegexSearch: true
+          name: authors
+        - type: string
+          name: bioprojectAccession
+        - type: string
+          name: biosampleAccession
+        - type: string
+          name: bodyProduct
+        - type: int
+          name: breadthOfCoverage
+        - type: string
+          generateIndex: true
+          name: cellLine
+        - type: string
+          name: collectionDevice
+        - type: string
+          name: collectionMethod
+        - type: float
+          name: completeness
+        - type: string
+          name: consensusSequenceSoftwareName
+        - type: string
+          name: consensusSequenceSoftwareVersion
+        - type: string
+          name: cultureId
+        - type: string
+          name: dehostingMethod
+        - type: int
+          name: depthOfCoverage
+        - type: string
+          name: diagnosticMeasurementMethod
+        - type: string
+          name: diagnosticMeasurementUnit
+        - type: string
+          name: diagnosticMeasurementValue
+        - type: string
+          name: diagnosticTargetGeneName
+        - type: string
+          name: diagnosticTargetPresence
+        - type: string
+          name: displayName
+        - type: string
+          name: environmentalMaterial
+        - type: string
+          name: environmentalSite
+        - type: string
+          name: experimentalSpecimenRoleType
+        - type: string
+          name: exposureDetails
+        - type: string
+          name: exposureEvent
+        - type: string
+          name: exposureSetting
+        - type: string
+          name: foodProduct
+        - type: string
+          name: foodProductProperties
+        - type: string
+          name: frameShifts
+        - type: string
+          generateIndex: true
+          name: geoLocAdmin1
+        - type: string
+          generateIndex: true
+          name: geoLocAdmin2
+        - type: string
+          generateIndex: true
+          name: geoLocCity
+        - type: string
+          generateIndex: true
+          name: geoLocCountry
+        - type: string
+          name: geoLocSite
+        - type: int
+          name: hostAge
+        - type: string
+          name: hostAgeBin
+        - type: string
+          name: hostDisease
+        - type: string
+          name: hostGender
+        - type: string
+          name: hostHealthOutcome
+        - type: string
+          name: hostHealthState
+        - type: string
+          generateIndex: true
+          name: hostNameCommon
+        - type: string
+          generateIndex: true
+          name: hostNameScientific
+        - type: string
+          name: hostOriginCountry
+        - type: string
+          name: hostRole
+        - type: int
+          name: hostTaxonId
+        - type: string
+          name: hostVaccinationStatus
+        - type: string
+          name: insdcAccessionBase
+        - type: string
+          name: insdcAccessionFull
+        - type: int
+          name: insdcVersion
+        - type: boolean
+          name: isLabHost
+        - type: int
+          name: length
+        - type: date
+          name: ncbiReleaseDate
+        - type: string
+          generateIndex: true
+          name: ncbiSourceDb
+        - type: string
+          generateIndex: true
+          name: ncbiSubmitterCountry
+        - type: date
+          name: ncbiUpdateDate
+        - type: string
+          generateIndex: true
+          name: ncbiVirusName
+        - type: int
+          name: ncbiVirusTaxId
+        - type: string
+          generateIndex: true
+          name: passageMethod
+        - type: int
+          name: passageNumber
+        - type: string
+          name: presamplingActivity
+        - type: string
+          name: previousInfectionDisease
+        - type: string
+          name: previousInfectionOrganism
+        - type: string
+          name: purposeOfSampling
+        - type: string
+          name: purposeOfSequencing
+        - type: string
+          name: qualityControlDetails
+        - type: string
+          name: qualityControlDetermination
+        - type: string
+          name: qualityControlIssues
+        - type: string
+          name: qualityControlMethodName
+        - type: string
+          name: qualityControlMethodVersion
+        - type: string
+          name: rawSequenceDataProcessingMethod
+        - type: string
+          name: referenceGenomeAccession
+        - type: date
+          name: sampleCollectionDate
+        - type: date
+          name: sampleReceivedDate
+        - type: string
+          name: sampleType
+        - type: string
+          name: sequencedByContactEmail
+        - type: string
+          name: sequencedByContactName
+        - type: string
+          name: sequencedByOrganization
+        - type: string
+          name: sequencingAssayType
+        - type: date
+          name: sequencingDate
+        - type: string
+          name: sequencingInstrument
+        - type: string
+          name: sequencingProtocol
+        - type: string
+          name: signsAndSymptoms
+        - type: string
+          name: specimenCollectorSampleId
+        - type: string
+          name: specimenProcessing
+        - type: string
+          name: specimenProcessingDetails
+        - type: string
+          name: sraRunAccession
+        - type: int
+          name: totalAmbiguousNucs
+        - type: int
+          name: totalDeletedNucs
+        - type: int
+          name: totalFrameShifts
+        - type: int
+          name: totalInsertedNucs
+        - type: int
+          name: totalSnps
+        - type: int
+          name: totalUnknownNucs
+        - type: string
+          name: travelHistory
+        - type: string
+          name: versionComment
+    primaryKey: accessionVersion
+    dateToSortBy: sampleCollectionDate
