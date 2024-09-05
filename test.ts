@@ -3,7 +3,9 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import * as path from 'path';
 import * as fs from 'fs';
 import { randomBytes } from 'node:crypto';
+import { decompress } from '@mongodb-js/zstd';
 
+// This number is used to start the distribution of ports to all the containers that are being run
 const PORT_BASE = 8000;
 
 // A salt for docker compose project names such that they do not conflict with previous or parallel test runs
@@ -42,7 +44,7 @@ testsets.forEach(([testsetDir, lapisPort, siloPort]) => {
     function dockerComposeUp() {
         console.log(`Starting Docker Compose for ${testsetDir}...`);
 
-        const dockerComposeUpCommand = `${dockerComposeEnv} BUILDKIT_PROGRESS=plain docker compose --project-name ${testName} up --no-recreate --detach --wait`;
+        const dockerComposeUpCommand = `${dockerComposeEnv} docker compose --project-name ${testName} --progress=plain up --no-recreate --detach --wait`;
 
         console.log(dockerComposeUpCommand);
         execSync(dockerComposeUpCommand, { stdio: 'inherit' });
@@ -51,6 +53,8 @@ testsets.forEach(([testsetDir, lapisPort, siloPort]) => {
     function dockerComposeDown() {
         console.log(`Stopping Docker Compose for ${testsetDir}...`);
 
+        // Add the sleep 1 because it takes some time until the port is available again.
+        // This might be relevant when running vitest with auto restart
         const dockerComposeDownCommand = `docker compose -p ${testName} down && sleep 1`;
 
         console.log(dockerComposeDownCommand);
@@ -92,17 +96,32 @@ function itShouldValidateQueryFromFile(file: string, queriesDir: string, lapisPo
             body: JSON.stringify(testCase.body),
         });
 
-        const responseText = await response.text();
+        const actualResponseText = await response.text();
 
         if (testCase.expectedStatusCode) {
-            expect(response.status).to.equal(testCase.expectedStatusCode, responseText);
+            expect(response.status).to.equal(testCase.expectedStatusCode, actualResponseText);
         }
         if (testCase.expectedResponse && testCase.expectedResponse.fileName) {
-            const responseFile = path.join(queriesDir, testCase.expectedResponse.fileName);
-            const expectedResponse = fs.readFileSync(responseFile, 'utf-8');
-            const actualResponse = JSON.parse(responseText).data;
+            const expectedResponseFile = path.join(queriesDir, testCase.expectedResponse.fileName);
+            const expectedResponseText = await getExpectedResponseString(
+                expectedResponseFile,
+                testCase.expectedResponse.decompressFile,
+            );
 
-            expect(actualResponse).to.deep.equal(JSON.parse(expectedResponse));
+            const expectedResponse = JSON.parse(expectedResponseText);
+            const actualResponse = JSON.parse(actualResponseText).data;
+
+            expect(actualResponse).to.deep.equal(expectedResponse);
         }
     });
+}
+
+async function getExpectedResponseString(file: string, compressed: boolean): Promise<string> {
+    if (compressed) {
+        const buffer: Buffer = fs.readFileSync(file);
+        const decompressedBuffer: Buffer = await decompress(buffer);
+        return decompressedBuffer.toString('utf-8');
+    } else {
+        return fs.readFileSync(file, 'utf-8');
+    }
 }
