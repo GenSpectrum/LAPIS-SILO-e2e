@@ -53,7 +53,7 @@ To add a new test set:
 
 1. Create a new directory under `/testsets/`
 2. Add necessary data files to the `data/` subdirectory
-3. Create query files in the `queries/` subdirectory (must end with `.query.json`)
+3. Create query files in the `queries/` subdirectory (must end with `.query.ts`)
 4. Add expected response files if needed
 
 The test runner will automatically detect and run tests for all test sets in the `/testsets/` directory.
