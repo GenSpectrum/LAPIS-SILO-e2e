@@ -39,58 +39,70 @@ testsets.forEach(([testsetDir, lapisPort, siloPort]) => {
         LAPIS_PORT=${lapisPort} SILO_PORT=${siloPort} \
         TESTSET_DATA_FOLDER=${dataDir} TESTSET_OUTPUT_FOLDER=${outputDir}`;
 
+    function dockerComposeUp() {
+        console.log(`Starting Docker Compose for ${testsetDir}...`);
+
+        const dockerComposeUpCommand = `${dockerComposeEnv} BUILDKIT_PROGRESS=plain docker compose --project-name ${testName} up --no-recreate --detach --wait`;
+
+        console.log(dockerComposeUpCommand);
+        execSync(dockerComposeUpCommand, { stdio: 'inherit' });
+    }
+
+    function dockerComposeDown() {
+        console.log(`Stopping Docker Compose for ${testsetDir}...`);
+
+        const dockerComposeDownCommand = `docker compose -p ${testName} down && sleep 1`;
+
+        console.log(dockerComposeDownCommand);
+        execSync(dockerComposeDownCommand, { stdio: 'inherit' });
+    }
+
     describe(`Testset: ${testName}`, () => {
         beforeAll(() => {
-            console.log(`Starting Docker Compose for ${testsetDir}...`);
-
-            const dockerComposeUpCommand = `${dockerComposeEnv} BUILDKIT_PROGRESS=plain docker compose --project-name ${testName} up --no-recreate --detach --wait`;
-
-            console.log(dockerComposeUpCommand);
-            execSync(dockerComposeUpCommand, { stdio: 'inherit' });
+            dockerComposeUp();
         });
 
         afterAll(() => {
-            console.log(`Stopping Docker Compose for ${testsetDir}...`);
-
-            const dockerComposeDownCommand = `docker compose -p ${testName} down && sleep 1`;
-
-            console.log(dockerComposeDownCommand);
-            execSync(dockerComposeDownCommand, { stdio: 'inherit' });
+            dockerComposeDown();
         });
 
         fs.readdirSync(queriesDir).forEach((file) => {
-            if (!file.endsWith('.query.json')) {
-                return;
-            }
-            const filePath = path.join(queriesDir, file);
-            const testCase = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-
-            it(`should validate query from ${file}`, async () => {
-                if (!testCase.name || !testCase.endpoint || !testCase.method || !testCase.headers || !testCase.body) {
-                    expect.fail(`The query '${file}' must contain name, endpoint, method, headers and body`);
-                }
-
-                const url = `http://localhost:${lapisPort}${testCase.endpoint}`;
-
-                const response = await fetch(url, {
-                    method: testCase.method,
-                    headers: testCase.headers,
-                    body: JSON.stringify(testCase.body),
-                });
-
-                const responseText = await response.text();
-
-                if (testCase.expectedStatusCode) {
-                    expect(response.status).to.equal(testCase.expectedStatusCode, responseText);
-                }
-                if (testCase.expectedResponse && testCase.expectedResponse.fileName) {
-                    const responseFile = path.join(queriesDir, testCase.expectedResponse.fileName);
-                    const expectedResponse = fs.readFileSync(responseFile, 'utf-8');
-                    const actualResponse = JSON.parse(responseText).data;
-
-                    expect(actualResponse).to.deep.equal(JSON.parse(expectedResponse));
-                }
-            });
+            itShouldValidateQueryFromFile(file, queriesDir, lapisPort);
         });
     });
 });
+
+function itShouldValidateQueryFromFile(file: string, queriesDir: string, lapisPort: number) {
+    if (!file.endsWith('.query.json')) {
+        return;
+    }
+    const filePath = path.join(queriesDir, file);
+    const testCase = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+
+    it(`should validate query from ${file}`, async () => {
+        if (!testCase.name || !testCase.endpoint || !testCase.method || !testCase.headers || !testCase.body) {
+            expect.fail(`The query '${file}' must contain name, endpoint, method, headers and body`);
+        }
+
+        const url = `http://localhost:${lapisPort}${testCase.endpoint}`;
+
+        const response = await fetch(url, {
+            method: testCase.method,
+            headers: testCase.headers,
+            body: JSON.stringify(testCase.body),
+        });
+
+        const responseText = await response.text();
+
+        if (testCase.expectedStatusCode) {
+            expect(response.status).to.equal(testCase.expectedStatusCode, responseText);
+        }
+        if (testCase.expectedResponse && testCase.expectedResponse.fileName) {
+            const responseFile = path.join(queriesDir, testCase.expectedResponse.fileName);
+            const expectedResponse = fs.readFileSync(responseFile, 'utf-8');
+            const actualResponse = JSON.parse(responseText).data;
+
+            expect(actualResponse).to.deep.equal(JSON.parse(expectedResponse));
+        }
+    });
+}
