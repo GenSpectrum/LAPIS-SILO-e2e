@@ -17,7 +17,7 @@ jobs:
       - name: pnpm i
         run: pnpm i
       - name: test
-        run: pnpm test --if-present
+        run: pnpm test
         env:
           LAPIS_TAG: latest
           SILO_TAG: latest
