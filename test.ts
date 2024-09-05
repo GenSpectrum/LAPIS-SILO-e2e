@@ -44,7 +44,7 @@ testsets.forEach(([testsetDir, lapisPort, siloPort]) => {
     function dockerComposeUp() {
         console.log(`Starting Docker Compose for ${testsetDir}...`);
 
-        const dockerComposeUpCommand = `${dockerComposeEnv} docker compose --project-name ${testName} --progress=plain up --no-recreate --detach --wait`;
+        const dockerComposeUpCommand = `${dockerComposeEnv} docker compose --project-name ${testName} --progress=plain up --no-recreate --detach --wait && sleep 4`;
 
         console.log(dockerComposeUpCommand);
         execSync(dockerComposeUpCommand, { stdio: 'inherit' });
@@ -55,7 +55,7 @@ testsets.forEach(([testsetDir, lapisPort, siloPort]) => {
 
         // Add the sleep 1 because it takes some time until the port is available again.
         // This might be relevant when running vitest with auto restart
-        const dockerComposeDownCommand = `docker compose -p ${testName} down && sleep 1`;
+        const dockerComposeDownCommand = `docker compose -p ${testName} --progress=plain down && sleep 1`;
 
         console.log(dockerComposeDownCommand);
         execSync(dockerComposeDownCommand, { stdio: 'inherit' });
