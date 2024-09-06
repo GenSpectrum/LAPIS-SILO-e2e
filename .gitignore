@@ -1,6 +1,12 @@
 # Ignore all files in the output directory across all subdirectories
 **/output/*
 
+# Ignore vitest /html
+/html/
+
+# No clue where this comes from but it ended up in the dir after running tests
+/compressed.tar.gz
+
 # Node modules and log files
 node_modules/
 npm-debug.log*
