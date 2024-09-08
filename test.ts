@@ -52,26 +52,50 @@ testsets.map((testSuite) => {
         fs.mkdirSync(outputDir);
     }
 
-    const dockerComposeEnv = `LAPIS_TAG=latest SILO_TAG=latest \
-        LAPIS_PORT=${testSuite.lapisPort} SILO_PORT=${testSuite.siloPort} \
-        TESTSET_DATA_FOLDER=${dataDir} TESTSET_OUTPUT_FOLDER=${outputDir}`;
+    const dockerComposeEnv = [
+        'LAPIS_TAG=latest',
+        'SILO_TAG=latest',
+        `LAPIS_PORT=${testSuite.lapisPort}`,
+        `SILO_PORT=${testSuite.siloPort}`,
+        `TESTSET_DATA_FOLDER=${dataDir}`,
+        `TESTSET_OUTPUT_FOLDER=${outputDir}`,
+    ];
 
     function dockerComposeUp() {
         console.log(`Starting Docker Compose for ${testSuite.path}...`);
 
-        const dockerComposeUpCommand = `${dockerComposeEnv} docker compose --project-name ${testName} --progress=plain up --no-recreate --detach --wait`;
+        const dockerComposeUpCommand = [
+            ...dockerComposeEnv,
+            'docker',
+            'compose',
+            `--project-name=${testName}`,
+            '--progress=plain',
+            'up',
+            '--quiet-pull',
+            '--no-recreate',
+            '--detach',
+            '--wait',
+        ].join(' ');
 
         console.log(dockerComposeUpCommand);
-        execSync(dockerComposeUpCommand, { stdio: 'inherit' });
+        const execOptions = process.env.VERBOSE ? { stdio: 'inherit' as 'inherit' } : { stdio: 'ignore' as 'ignore' };
+        execSync(dockerComposeUpCommand, execOptions);
     }
 
     function dockerComposeDown() {
         console.log(`Stopping Docker Compose for ${testSuite.path}...`);
 
-        const dockerComposeDownCommand = `docker compose -p ${testName} --progress=plain down`;
+        const dockerComposeDownCommand = [
+            'docker',
+            'compose',
+            `--project-name=${testName}`,
+            '--progress=plain',
+            'down',
+        ].join(' ');
 
         console.log(dockerComposeDownCommand);
-        execSync(dockerComposeDownCommand, { stdio: 'inherit' });
+        const execOptions = process.env.VERBOSE ? { stdio: 'inherit' as 'inherit' } : { stdio: 'ignore' as 'ignore' };
+        execSync(dockerComposeDownCommand, execOptions);
     }
 
     describe(`Testset: ${testName}`, () => {
