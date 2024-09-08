@@ -6,8 +6,8 @@
         "test": "vitest --reporter=html",
         "format": "prettier --write \"./**/*.{ts,tsx,json,astro,md,mdx,mjs,cjs}\"",
         "check-format": "prettier --check \"**/*.{ts,tsx,json,astro,md,mdx,mjs,cjs}\"",
-        "type-check": "tsc --noEmit",
-        "check": "npm run check-format && npm run type-check"
+        "check-types": "tsc --noEmit",
+        "check": "npm run check-format && npm run check-types"
     },
     "dependencies": {
         "@mongodb-js/zstd": "^1.2.1"
