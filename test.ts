@@ -4,9 +4,9 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { randomBytes } from 'node:crypto';
 import { decompress } from '@mongodb-js/zstd';
-import { TestCase } from './testCase.spec';
+import { TestCase } from './testCase.spec.js';
 
-// A salt for docker compose project names such that they do not conflict with previous or parallel test runs
+// A salt for docker compose project names to not conflict with previous or parallel test runs
 const docker_project_salt = randomBytes(Math.ceil(2)).toString('hex').slice(0, 4);
 
 type TestSuite = {
@@ -36,7 +36,10 @@ const testsets: TestSuite[] = await Promise.all(
     }),
 );
 
-console.log('All found testsets with corresponding LAPIS and SILO port numbers:', testsets);
+console.log(
+    'These are all the testsets that were identified with their corresponding LAPIS and SILO port numbers:',
+    testsets,
+);
 
 testsets.map((testSuite) => {
     const testBaseDir = path.basename(testSuite.path);
@@ -130,11 +133,11 @@ async function loadTestObject(filename: string): Promise<TestCase> {
         return module.default; // Access the default export
     } catch (error) {
         console.error(`Failed to load module: ${filename}`, error);
-        return null;
+        throw error;
     }
 }
 
-async function getExpectedResponseString(file: string, compressed: boolean): Promise<string> {
+async function getExpectedResponseString(file: string, compressed: boolean | undefined): Promise<string> {
     if (compressed) {
         const buffer: Buffer = fs.readFileSync(file);
         const decompressedBuffer: Buffer = await decompress(buffer);
