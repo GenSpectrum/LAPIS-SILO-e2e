@@ -8,7 +8,7 @@
         "check-format": "prettier --check \"**/*.{ts,tsx,json,astro,md,mdx,mjs,cjs}\""
     },
     "dependencies": {
-        "@mongodb-js/zstd": "^1.2.0",
+        "@mongodb-js/zstd": "^1.2.1",
         "@types/node": "^22.5.3",
         "prettier": "^3.3.3",
         "typescript": "^5.5.4",
