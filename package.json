@@ -9,11 +9,9 @@
         "check-types": "tsc --noEmit",
         "check": "npm run check-format && npm run check-types"
     },
-    "dependencies": {
-        "@mongodb-js/zstd": "^1.2.1"
-    },
     "type": "module",
     "devDependencies": {
+        "@mongodb-js/zstd": "^1.2.1",
         "@types/node": "^22.5.4",
         "prettier": "^3.3.3",
         "typescript": "^5.5.4",

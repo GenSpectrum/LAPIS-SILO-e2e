@@ -7,11 +7,10 @@ settings:
 importers:
 
   .:
-    dependencies:
+    devDependencies:
       '@mongodb-js/zstd':
         specifier: ^1.2.1
         version: 1.2.1
-    devDependencies:
       '@types/node':
         specifier: ^22.5.4
         version: 22.5.4
