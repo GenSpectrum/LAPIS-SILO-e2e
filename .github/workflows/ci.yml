@@ -33,17 +33,32 @@ jobs:
                   name: test-results
                   path: testsets/**/output
 
-    checks:
+    check-format:
         name: Check format
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
             - uses: actions/setup-node@v4
               with:
-                  node-version: lts/*
+                  node-version-file: '.nvmrc'
             - uses: actions/cache@v4
               with:
                   path: ~/.npm
                   key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
             - run: npm ci
             - run: npm run check-format
+    
+    check-types:
+        name: Check types
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: '.nvmrc'
+            - uses: actions/cache@v4
+              with:
+                  path: ~/.npm
+                  key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+            - run: npm ci
+            - run: npm run check-types

@@ -4,9 +4,9 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { randomBytes } from 'node:crypto';
 import { decompress } from '@mongodb-js/zstd';
-import { TestCase } from './testCase.spec';
+import { TestCase } from './testCase.spec.js';
 
-// A salt for docker compose project names such that they do not conflict with previous or parallel test runs
+// A salt for docker compose project names to not conflict with previous or parallel test runs
 const docker_project_salt = randomBytes(Math.ceil(2)).toString('hex').slice(0, 4);
 
 type TestSuite = {
@@ -36,7 +36,10 @@ const testsets: TestSuite[] = await Promise.all(
     }),
 );
 
-console.log('All found testsets with corresponding LAPIS and SILO port numbers:', testsets);
+console.log(
+    'These are all the testsets that were identified with their corresponding LAPIS and SILO port numbers:',
+    testsets,
+);
 
 testsets.map((testSuite) => {
     const testBaseDir = path.basename(testSuite.path);
@@ -49,26 +52,50 @@ testsets.map((testSuite) => {
         fs.mkdirSync(outputDir);
     }
 
-    const dockerComposeEnv = `LAPIS_TAG=latest SILO_TAG=latest \
-        LAPIS_PORT=${testSuite.lapisPort} SILO_PORT=${testSuite.siloPort} \
-        TESTSET_DATA_FOLDER=${dataDir} TESTSET_OUTPUT_FOLDER=${outputDir}`;
+    const dockerComposeEnv = [
+        'LAPIS_TAG=latest',
+        'SILO_TAG=latest',
+        `LAPIS_PORT=${testSuite.lapisPort}`,
+        `SILO_PORT=${testSuite.siloPort}`,
+        `TESTSET_DATA_FOLDER=${dataDir}`,
+        `TESTSET_OUTPUT_FOLDER=${outputDir}`,
+    ];
 
     function dockerComposeUp() {
         console.log(`Starting Docker Compose for ${testSuite.path}...`);
 
-        const dockerComposeUpCommand = `${dockerComposeEnv} docker compose --project-name ${testName} --progress=plain up --no-recreate --detach --wait`;
+        const dockerComposeUpCommand = [
+            ...dockerComposeEnv,
+            'docker',
+            'compose',
+            `--project-name=${testName}`,
+            '--progress=plain',
+            'up',
+            '--quiet-pull',
+            '--no-recreate',
+            '--detach',
+            '--wait',
+        ].join(' ');
 
         console.log(dockerComposeUpCommand);
-        execSync(dockerComposeUpCommand, { stdio: 'inherit' });
+        const execOptions = process.env.VERBOSE ? { stdio: 'inherit' as 'inherit' } : { stdio: 'ignore' as 'ignore' };
+        execSync(dockerComposeUpCommand, execOptions);
     }
 
     function dockerComposeDown() {
         console.log(`Stopping Docker Compose for ${testSuite.path}...`);
 
-        const dockerComposeDownCommand = `docker compose -p ${testName} --progress=plain down`;
+        const dockerComposeDownCommand = [
+            'docker',
+            'compose',
+            `--project-name=${testName}`,
+            '--progress=plain',
+            'down',
+        ].join(' ');
 
         console.log(dockerComposeDownCommand);
-        execSync(dockerComposeDownCommand, { stdio: 'inherit' });
+        const execOptions = process.env.VERBOSE ? { stdio: 'inherit' as 'inherit' } : { stdio: 'ignore' as 'ignore' };
+        execSync(dockerComposeDownCommand, execOptions);
     }
 
     describe(`Testset: ${testName}`, () => {
@@ -130,11 +157,11 @@ async function loadTestObject(filename: string): Promise<TestCase> {
         return module.default; // Access the default export
     } catch (error) {
         console.error(`Failed to load module: ${filename}`, error);
-        return null;
+        throw error;
     }
 }
 
-async function getExpectedResponseString(file: string, compressed: boolean): Promise<string> {
+async function getExpectedResponseString(file: string, compressed: boolean | undefined): Promise<string> {
     if (compressed) {
         const buffer: Buffer = fs.readFileSync(file);
         const decompressedBuffer: Buffer = await decompress(buffer);
