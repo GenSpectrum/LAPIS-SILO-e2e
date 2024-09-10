@@ -13,15 +13,6 @@ services:
               source: ${TESTSET_DATA_FOLDER}/reference_genomes.json
               target: /workspace/reference_genomes.json
               read_only: true
-        healthcheck: # TODO(https://github.com/GenSpectrum/LAPIS-SILO-e2e/issues/32) Remove at some point
-            test:
-                [
-                    'CMD-SHELL',
-                    'wget -qO- http://localhost:8080/sample/aggregated | grep -o ''"count":[0-9]*'' | sed ''s/[^0-9]//g'' | xargs test 0 -ne || exit 1',
-                ]
-            interval: 2s
-            timeout: 5s
-            retries: 10
         stop_grace_period: 0s
 
     silo:
