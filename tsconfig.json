@@ -5,7 +5,8 @@
         "target": "ES2023",
         "strict": true,
         "rootDir": "./",
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "allowImportingTsExtensions": true
     },
     "include": ["**/*.ts", "*.ts"],
     "exclude": ["node_modules"]
