@@ -1,0 +1,475 @@
+---
+schema:
+    instanceName: 'Ebola Sudan'
+    opennessLevel: 'OPEN'
+    metadata:
+        - name: 'accession'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'version'
+          type: 'int'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'submissionId'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'accessionVersion'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'isRevocation'
+          type: 'boolean'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'submitter'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'groupId'
+          type: 'int'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'groupName'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'submittedAtTimestamp'
+          type: 'int'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'submittedDate'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'releasedAtTimestamp'
+          type: 'int'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'releasedDate'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'dataUseTerms'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'dataUseTermsRestrictedUntil'
+          type: 'date'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'versionStatus'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'dataUseTermsUrl'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'ampliconPcrPrimerScheme'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'ampliconSize'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'anatomicalMaterial'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'anatomicalPart'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'authorAffiliations'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'authors'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: true
+        - name: 'bioprojectAccession'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'biosampleAccession'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'bodyProduct'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'breadthOfCoverage'
+          type: 'int'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'cellLine'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'collectionDevice'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'collectionMethod'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'completeness'
+          type: 'float'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'consensusSequenceSoftwareName'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'consensusSequenceSoftwareVersion'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'cultureId'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'dehostingMethod'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'depthOfCoverage'
+          type: 'int'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'diagnosticMeasurementMethod'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'diagnosticMeasurementUnit'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'diagnosticMeasurementValue'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'diagnosticTargetGeneName'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'diagnosticTargetPresence'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'displayName'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'environmentalMaterial'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'environmentalSite'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'experimentalSpecimenRoleType'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'exposureDetails'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'exposureEvent'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'exposureSetting'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'foodProduct'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'foodProductProperties'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'frameShifts'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'geoLocAdmin1'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'geoLocAdmin2'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'geoLocCity'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'geoLocCountry'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'geoLocSite'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'hostAge'
+          type: 'int'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'hostAgeBin'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'hostDisease'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'hostGender'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'hostHealthOutcome'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'hostHealthState'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'hostNameCommon'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'hostNameScientific'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'hostOriginCountry'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'hostRole'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'hostTaxonId'
+          type: 'int'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'hostVaccinationStatus'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'insdcAccessionBase'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'insdcAccessionFull'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'insdcVersion'
+          type: 'int'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'isLabHost'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'length'
+          type: 'int'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'ncbiReleaseDate'
+          type: 'date'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'ncbiSourceDb'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'ncbiSubmitterCountry'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'ncbiUpdateDate'
+          type: 'date'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'ncbiVirusName'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'ncbiVirusTaxId'
+          type: 'int'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'passageMethod'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'passageNumber'
+          type: 'int'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'presamplingActivity'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'previousInfectionDisease'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'previousInfectionOrganism'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'purposeOfSampling'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'purposeOfSequencing'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'qualityControlDetails'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'qualityControlDetermination'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'qualityControlIssues'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'qualityControlMethodName'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'qualityControlMethodVersion'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'rawSequenceDataProcessingMethod'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'referenceGenomeAccession'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'sampleCollectionDate'
+          type: 'date'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'sampleReceivedDate'
+          type: 'date'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'sampleType'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'sequencedByContactEmail'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'sequencedByContactName'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'sequencedByOrganization'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'sequencingAssayType'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'sequencingDate'
+          type: 'date'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'sequencingInstrument'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'sequencingProtocol'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'signsAndSymptoms'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'specimenCollectorSampleId'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'specimenProcessing'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'specimenProcessingDetails'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'sraRunAccession'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'stopCodons'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'totalAmbiguousNucs'
+          type: 'int'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'totalDeletedNucs'
+          type: 'int'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'totalFrameShifts'
+          type: 'int'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'totalInsertedNucs'
+          type: 'int'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'totalSnps'
+          type: 'int'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'totalStopCodons'
+          type: 'int'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'totalUnknownNucs'
+          type: 'int'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'travelHistory'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+        - name: 'versionComment'
+          type: 'string'
+          valuesAreUnique: false
+          lapisAllowsRegexSearch: false
+    primaryKey: 'accessionVersion'
+    features: []
