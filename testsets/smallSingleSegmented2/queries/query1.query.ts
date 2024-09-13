@@ -1,4 +1,4 @@
-import { TestCase } from '../../../testCase.spec.js';
+import { TestCase } from '../../../testCase.ts';
 const test: TestCase = {
     name: 'Test query',
     endpoint: '/sample/aggregated',

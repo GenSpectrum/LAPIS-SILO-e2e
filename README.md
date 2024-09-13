@@ -29,7 +29,11 @@ This repository contains end-to-end tests for the LAPIS API backed by SILO. It's
     npm test
     ```
 
-    This command will start up the Docker containers, execute all defined tests, and then shut down the containers.
+This command will start up the Docker containers, execute all defined tests, and then shut down the containers.
+
+Note that failing tests can lead to Docker containers that remain running. You can stop these containers by running `npm run dockerDown`.
+
+Also, tests can be rerun without restarting all containers by calling `vitest` after `npm run dockerUp` directly.
 
 ## Configuration
 
@@ -42,7 +46,7 @@ Modify the `database_config.yaml`, `reference_genomes.json`, and any other confi
     -   `queries/`: Test queries and expected responses
     -   `output/`: Output directory for SILO preprocessing
 -   `docker-compose.yml`: Defines the LAPIS and SILO services
--   `test.ts`: Main test script that sets up and runs all test sets
+-   `test.ts`: Main test script that runs all queries for all test sets
 -   `vitest.config.ts`: Vitest configuration
 -   `package.json`: Defines project dependencies and scripts
 -   `.prettierrc`: Prettier configuration for code formatting
@@ -57,6 +61,8 @@ To add a new test set:
 4. Add expected response files if needed
 
 The test runner will automatically detect and run tests for all test sets in the `/testsets/` directory.
+
+Before changing the `/testsets/` directory, always call `npm run dockerDown`. After modifying the directory this command might fail to take down all currently running containers, and they need to be stopped manually.
 
 ## Notes
 
