@@ -1,0 +1,23 @@
+import { TestCase } from '../../../testCase.ts';
+const test: TestCase = {
+    name: 'Query that filters for all restricted data',
+    endpoint: '/sample/details',
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: {
+        dataUseTerms: 'RESTRICTED',
+        fields: ['accessionVersion', 'accession', 'dataUseTerms', 'dataUseTermsRestrictedUntil'],
+        orderBy: [
+            {
+                field: 'accessionVersion',
+                type: 'ascending',
+            },
+        ],
+    },
+    expectedStatusCode: 200,
+    expectedResponse: {
+        fileName: 'test1_result.json.zst',
+        decompressFile: true,
+    },
+};
+export default test;
