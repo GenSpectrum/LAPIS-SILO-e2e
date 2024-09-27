@@ -16,8 +16,10 @@ const test: TestCase = {
     },
     expectedStatusCode: 200,
     expectedResponse: {
-        fileName: 'test3_result.json.zst',
-        decompressFile: true,
+        sql:
+            'select metadata.accession as accession,\n' +
+            'metadata.accessionVersion as accessionVersion\n' +
+            "from 'testsets/ebolaZaire/data/input_file.ndjson.zst' where metadata.geoLocCountry = 'Democratic Republic of the Congo' order by accessionVersion",
     },
 };
 export default test;
