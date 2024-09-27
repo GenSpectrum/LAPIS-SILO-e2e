@@ -15,8 +15,9 @@ const test: TestCase = {
     },
     expectedStatusCode: 200,
     expectedResponse: {
-        fileName: 'test6_result.json.zst',
-        decompressFile: true,
+        sql:
+            'select metadata.geoLocCountry as geoLocCountry, COUNT(*) as count\n' +
+            "from 'testsets/ebolaZaire/data/input_file.ndjson.zst' group by all order by geoLocCountry",
     },
 };
 export default test;

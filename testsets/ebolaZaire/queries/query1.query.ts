@@ -16,7 +16,7 @@ const test: TestCase = {
     },
     expectedStatusCode: 200,
     expectedResponse: {
-        fileName: 'query1.result.json',
+        relativeFilePath: 'query1.result.json',
     },
 };
 export default test;
