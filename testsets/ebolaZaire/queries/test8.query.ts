@@ -16,6 +16,7 @@ const test: TestCase = {
     },
     expectedStatusCode: 200,
     expectedResponse: {
+        type: 'SQLResult',
         sql:
             'select metadata.geoLocCountry as geoLocCountry, COUNT(*) as count\n' +
             "from 'testsets/ebolaZaire/data/input_file.ndjson.zst' where metadata.authors LIKE 'A%' group by all order by geoLocCountry",

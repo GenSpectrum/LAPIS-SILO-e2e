@@ -16,6 +16,7 @@ const test: TestCase = {
     },
     expectedStatusCode: 200,
     expectedResponse: {
+        type: 'SQLResult',
         sql:
             'select metadata.accession as accession,\n' +
             'metadata.accessionVersion as accessionVersion,\n' +

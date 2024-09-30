@@ -4,14 +4,16 @@
     "description": "Testing the LAPIS API, backed by SILO, designed for easily adding new test-cases.",
     "scripts": {
         "pretest": "npm run dockerUp",
-        "test": "vitest --reporter=html --reporter=default",
+        "test": "npm run testRunner",
         "posttest": "npm run dockerDown",
         "format": "prettier --write \"./**/*.{ts,tsx,json,astro,md,mdx,mjs,cjs}\"",
         "check-format": "prettier --check \"**/*.{ts,tsx,json,astro,md,mdx,mjs,cjs}\"",
         "check-types": "tsc --noEmit",
         "check": "npm run check-format && npm run check-types",
         "dockerUp": "tsx dockerUp.ts",
-        "dockerDown": "tsx dockerDown.ts"
+        "dockerDown": "tsx dockerDown.ts",
+        "generate": "tsx generate.ts",
+        "testRunner": "vitest --reporter=html --reporter=default"
     },
     "type": "module",
     "devDependencies": {

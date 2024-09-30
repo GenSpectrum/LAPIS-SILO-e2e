@@ -1,4 +1,4 @@
-import { TestCase } from './testCase.ts';
+import { AbsoluteFileResult, SQLResult, TestCase, ValidTestCase } from './testCase.ts';
 import path from 'path';
 import fs from 'fs';
 
@@ -6,7 +6,7 @@ export type TestSet = {
     path: string;
     lapisPort: number;
     siloPort: number;
-    testCases: TestCase[];
+    testCases: ValidTestCase[];
 };
 
 export async function getTestSets() {
@@ -19,7 +19,7 @@ export async function getTestSets() {
 
             const queriesDir = path.join(dir, 'queries');
 
-            const testCases: TestCase[] = await Promise.all(
+            const testCases: ValidTestCase[] = await Promise.all(
                 fs
                     .readdirSync(queriesDir)
                     .filter((x) => x.endsWith('.query.ts'))
@@ -44,12 +44,28 @@ function getTestsetDirectories(): string[] {
         .map((name) => path.join(testsetsPath, name));
 }
 
-async function loadTestObject(filename: string): Promise<TestCase> {
+async function loadTestObject(filename: string): Promise<ValidTestCase> {
     try {
         const module = await import(filename);
-        return module.default; // Access the default export
+        return validateTestCase(filename, module.default); // Access the default export
     } catch (error) {
         console.error(`Failed to load module: ${filename}`, error);
         throw error;
     }
+}
+function validateTestCase(testCaseFileName: string, testCase: TestCase): ValidTestCase {
+    return { testCaseFileName, testCase };
+}
+
+export function getAbsoluteFileResultFromSQLResult(result: SQLResult, testCaseFileName: string): AbsoluteFileResult {
+    let fileName = testCaseFileName + '.result.ndjson';
+    if (result.compress) {
+        fileName += '.zst';
+    }
+    return {
+        fileFormat: 'ndjson',
+        type: 'AbsoluteFileResult',
+        absoluteFilePath: fileName,
+        decompressFile: result.compress,
+    };
 }

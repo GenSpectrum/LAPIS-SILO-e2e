@@ -16,6 +16,7 @@ const test: TestCase = {
     },
     expectedStatusCode: 200,
     expectedResponse: {
+        type: 'RelativeFileResult',
         relativeFilePath: 'query1.result.json',
     },
 };
