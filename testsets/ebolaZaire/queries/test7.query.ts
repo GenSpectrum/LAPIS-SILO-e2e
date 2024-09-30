@@ -19,6 +19,7 @@ const test: TestCase = {
     },
     expectedStatusCode: 200,
     expectedResponse: {
+        type: 'SQLResult',
         sql:
             'select metadata.geoLocCountry as geoLocCountry, metadata.ncbiSubmitterCountry as ncbiSubmitterCountry, COUNT(*) as count\n' +
             "from 'testsets/ebolaZaire/data/input_file.ndjson.zst' group by all order by geoLocCountry,ncbiSubmitterCountry",

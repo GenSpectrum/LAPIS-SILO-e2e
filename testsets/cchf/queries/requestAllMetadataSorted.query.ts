@@ -14,6 +14,7 @@ const test: TestCase = {
     },
     expectedStatusCode: 200,
     expectedResponse: {
+        type: 'RelativeFileResult',
         relativeFilePath: 'requestAllMetadataSorted.json.zst',
         decompressFile: true,
     },

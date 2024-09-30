@@ -94,6 +94,7 @@ const test: TestCase = {
     },
     expectedStatusCode: 200,
     expectedResponse: {
+        type: 'RelativeFileResult',
         relativeFilePath: 'test1_result.json.zst',
         decompressFile: true,
     },
