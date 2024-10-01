@@ -33,7 +33,7 @@ This command will start up the Docker containers, execute all defined tests, and
 
 Note that failing tests can lead to Docker containers that remain running. You can stop these containers by running `npm run dockerDown`.
 
-Also, tests can be rerun without restarting all containers by calling `vitest` after `npm run dockerUp` directly.
+Also, tests can be rerun without restarting all containers by calling `npm run testRunner` after `npm run dockerUp` directly.
 
 ## Configuration
 
@@ -61,6 +61,8 @@ To add a new test set:
 4. Add expected response files if needed
 
 The test runner will automatically detect and run tests for all test sets in the `/testsets/` directory.
+
+If the added queries contain test, whose expectedResponse-body is a `sql:` statement, the test files need to be generated before running `npm test` by running `npm run generate`.
 
 Before changing the `/testsets/` directory, always call `npm run dockerDown`. After modifying the directory this command might fail to take down all currently running containers, and they need to be stopped manually.
 
