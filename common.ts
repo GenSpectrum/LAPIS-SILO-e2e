@@ -1,7 +1,10 @@
-import { execSync } from 'child_process';
+import { execSync, exec } from 'child_process';
 import { ExecSyncOptions } from 'node:child_process';
+import { promisify } from 'util';
 
 const PROJECT_PREFIX = 'lapis-silo-e2e-';
+
+const execAsync = promisify(exec);
 
 export function dockerComposeUp(projectName: string, dockerComposeEnv: string[]) {
     const dockerComposeUpCommand = [
@@ -18,7 +21,7 @@ export function dockerComposeUp(projectName: string, dockerComposeEnv: string[])
 
     console.log(dockerComposeUpCommand);
     const execOptions: ExecSyncOptions = process.env.VERBOSE ? { stdio: 'inherit' } : { stdio: 'ignore' };
-    execSync(dockerComposeUpCommand, execOptions);
+    return execAsync(dockerComposeUpCommand, execOptions);
 }
 
 export function dockerComposeDown(testName: string) {
