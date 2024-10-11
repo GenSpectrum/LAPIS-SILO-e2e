@@ -37,7 +37,7 @@ jobs:
                   path: testsets/**/output
 
             - name: Retrieve test results
-              if: failure() && github.event_name == 'schedule'
+              if: failure()
               id: test_results
               run: |
                 echo "test_output<<EOF" >> $GITHUB_OUTPUT
@@ -47,7 +47,7 @@ jobs:
 
             - name: Notify failed build
               uses: jayqi/failed-build-issue-action@v1
-              if: failure() && github.event_name == 'schedule'
+              if: failure()
               with:
                 github-token: ${{ secrets.GITHUB_TOKEN }}
                 title-template: Test Run Failure (Automatic Report)
