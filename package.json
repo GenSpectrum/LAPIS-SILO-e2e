@@ -9,9 +9,9 @@
         "check-format": "prettier --check \"**/*.{ts,tsx,json,astro,md,mdx,mjs,cjs}\"",
         "check-types": "tsc --noEmit",
         "check": "npm run check-format && npm run check-types",
-        "dockerUp": "tsx dockerUp.ts",
-        "dockerDown": "tsx dockerDown.ts",
-        "generate": "tsx generate.ts",
+        "dockerUp": "tsx bin/dockerUp.ts",
+        "dockerDown": "tsx bin/dockerDown.ts",
+        "generate": "tsx bin/generate.ts",
         "testRunner": "vitest --reporter=html --reporter=default"
     },
     "type": "module",

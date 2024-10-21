@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import { getTestSets, TestSet } from './testSet.ts';
-import { dockerComposeUp } from './common.ts';
+import { getTestSets, TestSet } from '../testSet.ts';
+import { dockerComposeUp } from '../common.ts';
 
 const testsets: TestSet[] = await getTestSets();
 
