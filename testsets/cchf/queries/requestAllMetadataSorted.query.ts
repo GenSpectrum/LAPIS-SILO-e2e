@@ -1,4 +1,4 @@
-import { TestCase } from '../../../testCase.ts';
+import { TestCase } from '../../../src/testCase.ts';
 const test: TestCase = {
     name: 'Query that requests all metadata and sorts it by the primary key',
     endpoint: '/sample/details',

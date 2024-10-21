@@ -1,4 +1,4 @@
-import { TestCase } from '../../../testCase.ts';
+import { TestCase } from '../../../src/testCase.ts';
 const test: TestCase = {
     name: 'Query that requests many metadata columns and sorts it by three fields',
     endpoint: '/sample/details',
