@@ -1,7 +1,11 @@
 import { getTestSets, TestSet } from '../src/testSet.ts';
-import { dockerComposeDown, dockerComposeUp } from '../src/docker.ts';
+import { dockerComposeDown, dockerComposeLogs, dockerComposeUp } from '../src/docker.ts';
 
-const DOCKER_COMMANDS = { up: dockerComposeUp, down: dockerComposeDown } as const;
+const DOCKER_COMMANDS = {
+    up: dockerComposeUp,
+    down: dockerComposeDown,
+    logs: dockerComposeLogs,
+};
 
 const args = process.argv.slice(2);
 
@@ -17,7 +21,7 @@ const dockerCommand = getDockerCommand(args[0]);
 
 await Promise.all(testSets.map(dockerCommand));
 
-function getDockerCommand(command: string) {
+function getDockerCommand(command: string): (testSet: TestSet) => Promise<any> {
     if (!(command in DOCKER_COMMANDS)) {
         throw new Error(`Invalid command: ${command}, expected one of ${Object.keys(DOCKER_COMMANDS)}`);
     }

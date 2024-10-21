@@ -6,6 +6,7 @@ import path from 'path';
 import fs from 'fs';
 
 const PROJECT_PREFIX = 'lapis-silo-e2e-';
+const LOG_DIR = 'logs';
 
 const execAsync = promisify(exec);
 
@@ -45,6 +46,19 @@ export function dockerComposeDown(testSet: TestSet) {
     const projectName = getDockerComposeProjectName(testSet);
 
     return execute(['docker', 'compose', `--project-name=${projectName}`, '--progress=plain', 'down']);
+}
+
+export async function dockerComposeLogs(testSet: TestSet) {
+    const projectName = getDockerComposeProjectName(testSet);
+
+    const { stdout, stderr } = await execute(['docker', 'compose', `--project-name=${projectName}`, 'logs']);
+
+    const logFile = `${LOG_DIR}/${projectName}.log`;
+    if (!fs.existsSync(LOG_DIR)) {
+        fs.mkdirSync(LOG_DIR);
+    }
+    console.log(`writing logs to ${logFile}`);
+    return fs.writeFileSync(logFile, stdout, { flag: 'w+' });
 }
 
 function getDockerComposeProjectName(testSet: TestSet) {
