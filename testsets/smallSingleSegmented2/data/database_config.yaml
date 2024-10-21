@@ -13,7 +13,9 @@ schema:
           type: string
           generateIndex: true
         - name: pangoLineage
-          type: pango_lineage
+          type: string
+          generateIndex: true
+          generateLineageIndex: true
         - name: division
           type: string
           generateIndex: true
