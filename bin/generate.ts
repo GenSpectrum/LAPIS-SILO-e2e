@@ -1,5 +1,5 @@
-import { SQLResult } from './testCase.ts';
-import { getTestSets, TestSet, getAbsoluteFileResultFromSQLResult } from './testSet.ts';
+import { SQLResult } from '../testCase.ts';
+import { getTestSets, TestSet, getAbsoluteFileResultFromSQLResult } from '../testSet.ts';
 import duckdb from 'duckdb';
 
 const db = new duckdb.Database(':memory:');
