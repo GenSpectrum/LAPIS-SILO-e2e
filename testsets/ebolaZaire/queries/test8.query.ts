@@ -1,4 +1,4 @@
-import { TestCase } from '../../../testCase.ts';
+import { TestCase } from '../../../src/testCase.ts';
 const test: TestCase = {
     name: "Query that filters the data by authors beginning with 'A' and aggregates it by geoLocCountry and ncbiSubmitterCountry",
     endpoint: '/sample/aggregated',

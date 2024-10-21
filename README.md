@@ -50,7 +50,9 @@ Modify the `database_config.yaml`, `reference_genomes.json`, and any other confi
     -   `queries/`: Test queries and expected responses
     -   `output/`: Output directory for SILO preprocessing
 -   `docker-compose.yml`: Defines the LAPIS and SILO services
--   `test.ts`: Main test script that runs all queries for all test sets
+-   `bin/`: Scripts to be executed via `npm run`
+-   `src/`: Main code for the tests
+    -   `src/testset.spec.ts`: Main test script that runs all queries for all test sets
 -   `vitest.config.ts`: Vitest configuration
 -   `package.json`: Defines project dependencies and scripts
 -   `.prettierrc`: Prettier configuration for code formatting

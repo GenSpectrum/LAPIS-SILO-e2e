@@ -1,4 +1,4 @@
-import { TestCase } from '../../../testCase.ts';
+import { TestCase } from '../../../src/testCase.ts';
 const test: TestCase = {
     name: 'Query that aggregates all data by geoLocCountry',
     endpoint: '/sample/aggregated',

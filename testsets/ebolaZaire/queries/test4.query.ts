@@ -1,4 +1,4 @@
-import { TestCase } from '../../../testCase.ts';
+import { TestCase } from '../../../src/testCase.ts';
 const test: TestCase = {
     name: 'Query that filters for the Republic of the Congo',
     endpoint: '/sample/details',

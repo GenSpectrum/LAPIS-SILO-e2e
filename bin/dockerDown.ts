@@ -1,6 +1,6 @@
 import * as path from 'path';
-import { getTestSets, TestSet } from '../testSet.ts';
-import { dockerComposeDown } from '../common.ts';
+import { getTestSets, TestSet } from '../src/testSet.ts';
+import { dockerComposeDown } from '../src/docker.ts';
 
 const testsets: TestSet[] = await getTestSets();
 
