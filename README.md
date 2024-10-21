@@ -29,9 +29,13 @@ This repository contains end-to-end tests for the LAPIS API backed by SILO. It's
     npm test
     ```
 
-This command will start up the Docker containers, execute all defined tests, and then shut down the containers.
+    This command will start up the Docker containers and execute all defined tests.
 
-Note that failing tests can lead to Docker containers that remain running. You can stop these containers by running `npm run dockerDown`.
+3. Stop Docker containers:
+
+    ```bash
+    npm run dockerDown
+    ```
 
 Also, tests can be rerun without restarting all containers by calling `npm run testRunner` after `npm run dockerUp` directly.
 
