@@ -36,6 +36,17 @@ jobs:
                   name: test-results
                   path: testsets/**/output
 
+            - name: Retrieve logs
+              if: failure()
+              run: pnpm dockerLogs
+
+            - name: Upload logs
+              uses: actions/upload-artifact@v4
+              if: failure()
+              with:
+                  name: logs
+                  path: logs/
+
             - name: Retrieve test results
               if: failure() && github.event_name == 'schedule'
               id: test_results
