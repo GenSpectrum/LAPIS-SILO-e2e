@@ -19,7 +19,7 @@ services:
         image: ghcr.io/genspectrum/lapis-silo:${SILO_TAG}
         ports:
             - ${SILO_PORT}:8081
-        command: --api
+        command: api
         volumes:
             - type: bind
               source: ${TESTSET_OUTPUT_FOLDER}/
@@ -32,7 +32,7 @@ services:
 
     siloPreprocessing:
         image: ghcr.io/genspectrum/lapis-silo:${SILO_TAG}
-        command: --preprocessing
+        command: preprocessing
         volumes:
             - type: bind
               source: ${TESTSET_OUTPUT_FOLDER}/
@@ -48,6 +48,6 @@ services:
               read_only: true
             - type: bind
               source: ${TESTSET_DATA_FOLDER}/database_config.yaml
-              target: /app/database_config.yaml
+              target: /preprocessing/input/database_config.yaml
               read_only: true
         stop_grace_period: 0s
