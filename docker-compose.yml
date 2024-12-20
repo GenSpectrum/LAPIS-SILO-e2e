@@ -46,8 +46,4 @@ services:
               source: ${TESTSET_DATA_FOLDER}/preprocessing_config.yaml
               target: /app/preprocessing_config.yaml
               read_only: true
-            - type: bind
-              source: ${TESTSET_DATA_FOLDER}/database_config.yaml
-              target: /preprocessing/input/database_config.yaml
-              read_only: true
         stop_grace_period: 0s
