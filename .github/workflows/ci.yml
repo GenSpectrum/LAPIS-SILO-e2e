@@ -17,13 +17,11 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   node-version-file: '.nvmrc'
-            - name: prepare pnpm
-              run: npm i -g pnpm
-            - name: pnpm i
-              run: pnpm i
+            - name: install dependencies
+              run: npm clean-install
             - name: test
               run: |
-                pnpm test 2>&1 | tee test_output.txt
+                npm test 2>&1 | tee test_output.txt
                 test ${PIPESTATUS[0]} -eq 0
               env:
                   LAPIS_TAG: latest
@@ -38,7 +36,7 @@ jobs:
 
             - name: Retrieve logs
               if: failure()
-              run: pnpm dockerLogs
+              run: npm run dockerLogs
 
             - name: Upload logs
               uses: actions/upload-artifact@v4

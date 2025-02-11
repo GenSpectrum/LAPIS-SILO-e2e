@@ -13,7 +13,7 @@ This repository contains end-to-end tests for the LAPIS API backed by SILO. It's
 
 - [Docker](https://www.docker.com/get-started) and Docker Compose
 - [Node.js](https://nodejs.org/en/) (version specified in `package.json`)
-- [npm](https://www.npmjs.com/get-npm) or [Yarn](https://yarnpkg.com/getting-started/install)
+- [npm](https://www.npmjs.com/get-npm)
 
 ## Running tests
 
