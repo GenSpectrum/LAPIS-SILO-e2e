@@ -49,9 +49,10 @@ jobs:
               if: failure() && github.event_name == 'schedule'
               id: test_results
               run: |
+                TRUNCATED_OUTPUT=$(cat test_output.txt | sed -r 's/\x1B\[[0-9;]*[mGKH]//g' | head -c 100000)
                 echo "test_output<<EOF" >> $GITHUB_OUTPUT
-                # Removing ANSI escape codes, because they bother in GitHub comments
-                cat test_output.txt | sed -r 's/\x1B\[[0-9;]*[mGKH]//g' >> $GITHUB_OUTPUT
+                echo "$TRUNCATED_OUTPUT" >> $GITHUB_OUTPUT
+                echo -e "\n\n[Output possibly truncated due to size limitations]" >> $GITHUB_OUTPUT
                 echo "EOF" >> $GITHUB_OUTPUT
 
             - name: Notify failed build
