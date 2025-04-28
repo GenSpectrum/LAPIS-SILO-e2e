@@ -17,13 +17,13 @@
     },
     "type": "module",
     "devDependencies": {
-        "@mongodb-js/zstd": "^2.0.0",
-        "@types/node": "^22.13.10",
-        "@vitest/ui": "^3.0.8",
-        "duckdb": "^1.2.0",
+        "@mongodb-js/zstd": "^2.0.1",
+        "@types/node": "^22.15.3",
+        "@vitest/ui": "^3.1.2",
+        "duckdb": "^1.2.1",
         "prettier": "^3.5.3",
         "tsx": "^4.19.3",
-        "typescript": "^5.8.2",
+        "typescript": "^5.8.3",
         "vitest": "^3.0.3"
     },
     "engines": {
