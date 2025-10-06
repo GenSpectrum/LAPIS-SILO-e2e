@@ -1,3 +1,4 @@
 ndjsonInputFilename: input_file.ndjson
-lineageDefinitionsFilename: 'lineage_definitions.yaml'
+lineageDefinitionFilenames:
+  - 'lineage_definitions.yaml'
 referenceGenomeFilename: reference_genomes.json
