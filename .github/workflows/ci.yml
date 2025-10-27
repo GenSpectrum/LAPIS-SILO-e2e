@@ -28,7 +28,7 @@ jobs:
                   SILO_TAG: latest
 
             - name: Upload test results
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v5
               if: always()
               with:
                   name: test-results
@@ -39,7 +39,7 @@ jobs:
               run: npm run dockerLogs
 
             - name: Upload logs
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v5
               if: failure()
               with:
                   name: logs
