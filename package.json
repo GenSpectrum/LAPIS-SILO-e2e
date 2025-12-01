@@ -19,10 +19,10 @@
     "devDependencies": {
         "@mongodb-js/zstd": "^7.0.0",
         "@types/node": "^24.10.1",
-        "@vitest/ui": "^4.0.13",
+        "@vitest/ui": "^4.0.14",
         "duckdb": "^1.4.2",
-        "prettier": "^3.6.2",
-        "tsx": "^4.20.6",
+        "prettier": "^3.7.3",
+        "tsx": "^4.21.0",
         "typescript": "^5.9.3",
         "vitest": "^4.0.6"
     },
